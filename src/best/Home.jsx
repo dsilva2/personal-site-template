@@ -13,7 +13,7 @@ export const Home = () => {
         <hr/>
         <Teaching/>
         <hr/>
-        <PaperList/>
+        {/* <PaperList/> */}
 
         </div>
     </div>
