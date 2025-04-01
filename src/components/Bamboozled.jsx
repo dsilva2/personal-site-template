@@ -5,15 +5,34 @@ export const Bamboozled = () => {
   const navigate = useNavigate();
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const buttonRef = useRef(null);
+  const secretButtonRef = useRef(null);
   const [buttonPosition, setButtonPosition] = useState({
     top: "20px",
     left: "20px",
+  });
+  const [secretButtonPosition, setSecretButtonPosition] = useState({
+    top: "20px",
+    left: "100px",
   });
 
   const buttonStyle = {
     position: "absolute",
     top: buttonPosition.top,
     left: buttonPosition.left,
+    padding: "10px 20px",
+    backgroundColor: "#333",
+    color: "white",
+    border: "none",
+    borderRadius: "5px",
+    zIndex: 1000,
+    cursor: "none",
+    transition: "all 0.3s ease-in-out",
+  };
+
+  const secretButtonStyle = {
+    position: "absolute",
+    top: secretButtonPosition.top,
+    left: secretButtonPosition.left,
     padding: "10px 20px",
     backgroundColor: "#333",
     color: "white",
@@ -50,16 +69,23 @@ export const Bamboozled = () => {
 
     window.addEventListener("mousemove", handleMouseMove);
 
-    // Move button around every 2 seconds
-    const moveButton = () => {
+    // Move buttons around every 2 seconds
+    const moveButtons = () => {
       const maxX = window.innerWidth - 100; // Account for button width
       const maxY = window.innerHeight - 50; // Account for button height
-      const newX = Math.random() * maxX;
-      const newY = Math.random() * maxY;
-      setButtonPosition({ top: `${newY}px`, left: `${newX}px` });
+
+      // Move first button
+      const newX1 = Math.random() * maxX;
+      const newY1 = Math.random() * maxY;
+      setButtonPosition({ top: `${newY1}px`, left: `${newX1}px` });
+
+      // Move second button
+      const newX2 = Math.random() * maxX;
+      const newY2 = Math.random() * maxY;
+      setSecretButtonPosition({ top: `${newY2}px`, left: `${newX2}px` });
     };
 
-    const buttonInterval = setInterval(moveButton, 2000);
+    const buttonInterval = setInterval(moveButtons, 10000);
 
     // Cleanup
     return () => {
@@ -73,10 +99,6 @@ export const Bamboozled = () => {
   const handleClick = () => {
     if (buttonRef.current) {
       const buttonRect = buttonRef.current.getBoundingClientRect();
-      const invertedX = window.innerWidth - cursorPos.x;
-      const invertedY = window.innerHeight - cursorPos.y;
-
-      // Check if the displayed cursor (not the actual mouse) is within button bounds
       if (
         cursorPos.x >= buttonRect.left &&
         cursorPos.x <= buttonRect.right &&
@@ -84,8 +106,17 @@ export const Bamboozled = () => {
         cursorPos.y <= buttonRect.bottom
       ) {
         navigate("/");
-        // As a fallback
-        window.location.href = "/";
+      }
+    }
+    if (secretButtonRef.current) {
+      const buttonRect = secretButtonRef.current.getBoundingClientRect();
+      if (
+        cursorPos.x >= buttonRect.left &&
+        cursorPos.x <= buttonRect.right &&
+        cursorPos.y >= buttonRect.top &&
+        cursorPos.y <= buttonRect.bottom
+      ) {
+        window.location.href = process.env.REACT_APP_SECRET_SITE_URL;
       }
     }
   };
@@ -97,6 +128,9 @@ export const Bamboozled = () => {
     >
       <button ref={buttonRef} style={buttonStyle}>
         Back
+      </button>
+      <button ref={secretButtonRef} style={secretButtonStyle}>
+        Secret Site
       </button>
       <div
         style={{
