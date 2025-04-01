@@ -5,11 +5,15 @@ export const Bamboozled = () => {
   const navigate = useNavigate();
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const buttonRef = useRef(null);
+  const [buttonPosition, setButtonPosition] = useState({
+    top: "20px",
+    left: "20px",
+  });
 
   const buttonStyle = {
     position: "absolute",
-    top: "20px",
-    left: "20px",
+    top: buttonPosition.top,
+    left: buttonPosition.left,
     padding: "10px 20px",
     backgroundColor: "#333",
     color: "white",
@@ -17,6 +21,7 @@ export const Bamboozled = () => {
     borderRadius: "5px",
     zIndex: 1000,
     cursor: "none",
+    transition: "all 0.3s ease-in-out",
   };
 
   useEffect(() => {
@@ -45,11 +50,23 @@ export const Bamboozled = () => {
 
     window.addEventListener("mousemove", handleMouseMove);
 
+    // Move button around every 2 seconds
+    const moveButton = () => {
+      const maxX = window.innerWidth - 100; // Account for button width
+      const maxY = window.innerHeight - 50; // Account for button height
+      const newX = Math.random() * maxX;
+      const newY = Math.random() * maxY;
+      setButtonPosition({ top: `${newY}px`, left: `${newX}px` });
+    };
+
+    const buttonInterval = setInterval(moveButton, 2000);
+
     // Cleanup
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       document.body.removeChild(cursor);
       document.body.style.cursor = "default";
+      clearInterval(buttonInterval);
     };
   }, []);
 
