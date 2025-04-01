@@ -69,7 +69,7 @@ export const Bamboozled = () => {
 
     window.addEventListener("mousemove", handleMouseMove);
 
-    // Move buttons around every 2 seconds
+    // Move buttons around every second
     const moveButtons = () => {
       const maxX = window.innerWidth - 100; // Account for button width
       const maxY = window.innerHeight - 50; // Account for button height
@@ -85,7 +85,7 @@ export const Bamboozled = () => {
       setSecretButtonPosition({ top: `${newY2}px`, left: `${newX2}px` });
     };
 
-    const buttonInterval = setInterval(moveButtons, 10000);
+    const buttonInterval = setInterval(moveButtons, 1000);
 
     // Cleanup
     return () => {
