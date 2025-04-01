@@ -116,7 +116,7 @@ export const Bamboozled = () => {
         cursorPos.y >= buttonRect.top &&
         cursorPos.y <= buttonRect.bottom
       ) {
-        window.location.href = process.env.REACT_APP_SECRET_SITE_URL;
+        window.location.href = import.meta.env.VITE_SECRET_SITE_URL;
       }
     }
   };
