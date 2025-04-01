@@ -1,6 +1,6 @@
 import "./App.css";
 import { Home } from "./best/Home";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { Bamboozled } from "./components/Bamboozled";
 
 function App() {

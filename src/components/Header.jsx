@@ -1,6 +1,5 @@
 import { Face } from "./Face";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 export const Header = () => {
   const headerStyle = { marginBottom: "2px", marginTop: "2px" };
@@ -19,7 +18,13 @@ export const Header = () => {
         <h1 style={{ marginBottom: "5px" }}>Drew Silva</h1>
         <h2 style={headerStyle}>MS Student at Stanford University</h2>
         <h3 style={headerStyle}>dsilva24 /at/ stanford.edu</h3>
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
           <a href="https://github.com/dsilva2" aria-label="Github Link">
             <FaGithub
               style={{
@@ -50,26 +55,6 @@ export const Header = () => {
               }}
             />
           </a>
-          {/* <Link
-            to="/football"
-            style={{
-              marginLeft: "10px",
-              textDecoration: "none",
-              color: "inherit",
-            }}
-          >
-            Football
-          </Link> */}
-          <Link
-            to="/bamboozled"
-            style={{
-              marginLeft: "10px",
-              textDecoration: "none",
-              color: "inherit",
-            }}
-          >
-            Bamboozled
-          </Link>
         </div>
       </div>
     </div>
