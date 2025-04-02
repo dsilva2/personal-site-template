@@ -1,5 +1,6 @@
 import { Face } from "./Face";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const headerStyle = { marginBottom: "2px", marginTop: "2px" };
@@ -17,7 +18,21 @@ export const Header = () => {
       >
         <h1 style={{ marginBottom: "5px" }}>Drew Silva</h1>
         <h2 style={headerStyle}>MS Student at Stanford University</h2>
-        <h3 style={headerStyle}>dsilva24 /at/ stanford.edu</h3>
+        <h3 style={headerStyle}>
+          <Link
+            to="/contact"
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+              cursor: "pointer",
+              ":hover": {
+                textDecoration: "underline",
+              },
+            }}
+          >
+            dsilva24 /at/ stanford.edu
+          </Link>
+        </h3>
         <div
           style={{
             display: "flex",
