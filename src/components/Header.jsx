@@ -6,7 +6,7 @@ export const Header = () => {
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
-      <Face imageUrl="me.png" />
+      <Face imageUrl="seriousMe.png" />
       <div
         style={{
           display: "flex",

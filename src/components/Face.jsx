@@ -26,7 +26,7 @@ export const Face = ({ imageUrl = "me.jpg" }) => {
           <circle cx="110" cy="110" r="90" />
         </clipPath>
         <image
-          href={isHovered ? "seriousMe.png" : imageUrl}
+          href={isHovered ? "me.png" : imageUrl}
           width="180"
           height="180"
           x="20"
