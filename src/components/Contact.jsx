@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 export const Contact = () => {
   const [displayText, setDisplayText] = useState("");
   const [isMobile, setIsMobile] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   // Detect if user is on mobile
   useEffect(() => {
@@ -69,6 +70,36 @@ export const Contact = () => {
 
   const handleKeyInteraction = (key) => {
     setDisplayText((prev) => prev + key);
+  };
+
+  const modalOverlayStyle = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    display: showModal ? "flex" : "none",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1000,
+  };
+
+  const modalStyle = {
+    backgroundColor: "white",
+    padding: "20px",
+    borderRadius: "10px",
+    maxWidth: "400px",
+    textAlign: "center",
+    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+  };
+
+  const handleSubmit = () => {
+    setShowModal(true);
+    // Auto-hide modal after 3 seconds
+    setTimeout(() => {
+      setShowModal(false);
+    }, 3000);
   };
 
   return (
@@ -158,6 +189,27 @@ export const Contact = () => {
         >
           Clear
         </button>
+
+        <button
+          onClick={handleSubmit}
+          style={{
+            ...buttonStyle,
+            backgroundColor: "#4CAF50",
+            marginLeft: "10px",
+          }}
+        >
+          Submit
+        </button>
+      </div>
+
+      {/* Modal */}
+      <div style={modalOverlayStyle} onClick={() => setShowModal(false)}>
+        <div style={modalStyle} onClick={(e) => e.stopPropagation()}>
+          <h3 style={{ margin: "0 0 10px 0" }}>Oops!</h3>
+          <p style={{ margin: "0" }}>
+            Not done yet but thanks for entering your email!
+          </p>
+        </div>
       </div>
     </div>
   );
