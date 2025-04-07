@@ -141,7 +141,7 @@ export const Bamboozled = () => {
           fontSize: "2em",
         }}
       >
-        Get bamboozled idiot
+        Get bamboozled
       </div>
     </div>
   );
