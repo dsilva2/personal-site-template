@@ -13,7 +13,7 @@ I am currently working on developing grounded tools to help students learn Compu
 Additionally, I am passionate about using computers to make the world a more positive, and equitable place.
 </p> */}
 <p>
-    I did my undergrad here too. I have been here forever.
+    I also did my undergrad here in CS.
 </p>
         </div>
     )

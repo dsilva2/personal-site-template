@@ -2,7 +2,7 @@ export const Teaching = () => {
   return (
     <div className="teaching">
       <h1>Teaching</h1>
-      <p>I have been trusted to teach a few classes for some reason.</p>
+      <p>I have been fortunate to teach a few classes here at Stanford.</p>
       <ul>
         <li>
           <a href="https://web.stanford.edu/class/cs194/">
