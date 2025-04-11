@@ -2,17 +2,31 @@ import React, { useState, useEffect } from "react";
 import "../index.css";
 import { countries } from "../data/countries";
 
+// Fisher-Yates shuffle algorithm
+const shuffleArray = (array) => {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+};
+
 export const Flags = () => {
   const [currentCountry, setCurrentCountry] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [correctCount, setCorrectCount] = useState(0);
   const [message, setMessage] = useState("");
   const [imageError, setImageError] = useState(false);
-  const [remainingCountries, setRemainingCountries] = useState([...countries]);
+  const [remainingCountries, setRemainingCountries] = useState(
+    shuffleArray([...countries])
+  );
   const [completedCountries, setCompletedCountries] = useState(new Set());
 
   useEffect(() => {
-    setCurrentCountry(remainingCountries[0]);
+    if (remainingCountries.length > 0) {
+      setCurrentCountry(remainingCountries[0]);
+    }
   }, [remainingCountries]);
 
   useEffect(() => {
@@ -27,10 +41,9 @@ export const Flags = () => {
       setCompletedCountries((prev) => new Set([...prev, currentCountry.name]));
       setTimeout(() => {
         const newRemaining = remainingCountries.filter(
-          (country) => country !== currentCountry
+          (country) => country.name !== currentCountry.name
         );
         setRemainingCountries(newRemaining);
-        setCurrentCountry(newRemaining[0]);
         setUserInput("");
         setMessage("");
         setImageError(false);
@@ -93,8 +106,15 @@ export const Flags = () => {
             {message}
           </div>
         )}
+        <div className="flag-navigation">
+          <button className="nav-arrow" onClick={() => navigateFlag("prev")}>
+            ←
+          </button>
+          <button className="nav-arrow" onClick={() => navigateFlag("next")}>
+            →
+          </button>
+        </div>
       </div>
-
     </div>
   );
 };
