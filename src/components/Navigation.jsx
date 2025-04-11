@@ -21,6 +21,14 @@ export const Navigation = () => {
         >
           Projects
         </Link>
+        <Link
+          to="/flags"
+          className={`nav-link ${
+            location.pathname === "/flags" ? "active" : ""
+          }`}
+        >
+          Flags
+        </Link>
       </div>
     </nav>
   );

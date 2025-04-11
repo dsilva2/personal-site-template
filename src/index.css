@@ -176,3 +176,74 @@
   background-color: rgba(0, 0, 0, 0.1);
   color: #333;
 }
+
+.flags-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flag-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.flag-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 1rem;
+  border: 1px solid #e8e4e4;
+  border-radius: 0.25rem;
+}
+
+.flag-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.flag-input {
+  padding: 0.75rem;
+  border: 1px solid #e8e4e4;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.flag-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+}
+
+.message {
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.message.correct {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.message.incorrect {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.score {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
