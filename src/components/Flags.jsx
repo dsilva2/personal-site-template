@@ -18,16 +18,21 @@ export const Flags = () => {
   const [correctCount, setCorrectCount] = useState(0);
   const [message, setMessage] = useState("");
   const [imageError, setImageError] = useState(false);
-  const [remainingCountries, setRemainingCountries] = useState(
-    shuffleArray([...countries])
-  );
+  const [remainingCountries, setRemainingCountries] = useState([]);
   const [completedCountries, setCompletedCountries] = useState(new Set());
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Initialize with shuffled countries
+  useEffect(() => {
+    setRemainingCountries(shuffleArray([...countries]));
+  }, []);
+
+  // Set current country when remaining countries change
   useEffect(() => {
     if (remainingCountries.length > 0) {
-      setCurrentCountry(remainingCountries[0]);
+      setCurrentCountry(remainingCountries[currentIndex]);
     }
-  }, [remainingCountries]);
+  }, [remainingCountries, currentIndex]);
 
   useEffect(() => {
     if (!currentCountry || !userInput) return;
@@ -44,12 +49,16 @@ export const Flags = () => {
           (country) => country.name !== currentCountry.name
         );
         setRemainingCountries(newRemaining);
+        // Only reset index if we're at the end of the array
+        if (currentIndex >= newRemaining.length) {
+          setCurrentIndex(0);
+        }
         setUserInput("");
         setMessage("");
         setImageError(false);
       }, 1000);
     }
-  }, [userInput, currentCountry, remainingCountries]);
+  }, [userInput, currentCountry, remainingCountries, currentIndex]);
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
@@ -59,7 +68,25 @@ export const Flags = () => {
     setImageError(true);
   };
 
-  if (!currentCountry) {
+  const navigateFlag = (direction) => {
+    if (!currentCountry || remainingCountries.length <= 1) return;
+
+    let newIndex;
+    if (direction === "next") {
+      newIndex = (currentIndex + 1) % remainingCountries.length;
+    } else {
+      newIndex =
+        (currentIndex - 1 + remainingCountries.length) %
+        remainingCountries.length;
+    }
+
+    setCurrentIndex(newIndex);
+    setUserInput("");
+    setMessage("");
+    setImageError(false);
+  };
+
+  if (remainingCountries.length === 0) {
     return (
       <div className="flags-container">
         <h1>Flag Quiz Complete!</h1>
@@ -68,6 +95,10 @@ export const Flags = () => {
         </div>
       </div>
     );
+  }
+
+  if (!currentCountry) {
+    return <div className="flags-container">Loading...</div>;
   }
 
   return (
