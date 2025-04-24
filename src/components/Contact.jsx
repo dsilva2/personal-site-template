@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { supabase } from "../lib/supabase";
 
 export const Contact = () => {
   const [displayText, setDisplayText] = useState("");
   const [isMobile, setIsMobile] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   // Detect if user is on mobile
   useEffect(() => {
@@ -94,9 +96,23 @@ export const Contact = () => {
     boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setShowModal(true);
-    // Auto-hide modal after 3 seconds
+
+    try {
+      const { error } = await supabase
+        .from("emails")
+        .insert([{ email: displayText }]);
+
+      if (error) throw error;
+
+      setModalMessage("Email sent! We'll be in contact shortly");
+      setDisplayText("");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setModalMessage("Oops, error");
+    }
+
     setTimeout(() => {
       setShowModal(false);
     }, 3000);
@@ -205,10 +221,10 @@ export const Contact = () => {
       {/* Modal */}
       <div style={modalOverlayStyle} onClick={() => setShowModal(false)}>
         <div style={modalStyle} onClick={(e) => e.stopPropagation()}>
-          <h3 style={{ margin: "0 0 10px 0" }}>Oops!</h3>
-          <p style={{ margin: "0" }}>
-            Not done yet but thanks for entering your email!
-          </p>
+          <h3 style={{ margin: "0 0 10px 0" }}>
+            {modalMessage === "Oops, error" ? "Error" : "Success"}
+          </h3>
+          <p style={{ margin: "0" }}>{modalMessage}</p>
         </div>
       </div>
     </div>
