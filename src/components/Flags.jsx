@@ -56,7 +56,7 @@ export const Flags = () => {
         setUserInput("");
         setMessage("");
         setImageError(false);
-      }, 1000);
+      }, 10);
     }
   }, [userInput, currentCountry, remainingCountries, currentIndex]);
 
@@ -109,26 +109,37 @@ export const Flags = () => {
       </div>
       <div className="flag-card">
         {!imageError ? (
-          <img
-            src={currentCountry.flag}
-            alt={`Flag of ${currentCountry.name}`}
-            className="flag-image"
-            onError={handleImageError}
-          />
+          <div className="flag-image-container">
+            <img
+              src={currentCountry.flag}
+              alt={`Flag of ${currentCountry.name}`}
+              className="flag-image"
+              onError={handleImageError}
+            />
+          </div>
         ) : (
           <div className="flag-error">Flag image not available</div>
         )}
+
         <div className="flag-form">
-          <input
-            type="text"
-            value={userInput}
-            onChange={handleInputChange}
-            placeholder="Enter country name"
-            className="flag-input"
-            autoFocus
-          />
+          <div className="flag-input-container">
+            <button className="nav-arrow" onClick={() => navigateFlag("prev")}>
+              ←
+            </button>
+            <input
+              type="text"
+              value={userInput}
+              onChange={handleInputChange}
+              placeholder="Enter country name"
+              className="flag-input"
+              autoFocus
+            />
+            <button className="nav-arrow" onClick={() => navigateFlag("next")}>
+              →
+            </button>
+          </div>
         </div>
-        {message && (
+        {/* {message && (
           <div
             className={`message ${
               message === "Correct!" ? "correct" : "incorrect"
@@ -136,15 +147,7 @@ export const Flags = () => {
           >
             {message}
           </div>
-        )}
-        <div className="flag-navigation">
-          <button className="nav-arrow" onClick={() => navigateFlag("prev")}>
-            ←
-          </button>
-          <button className="nav-arrow" onClick={() => navigateFlag("next")}>
-            →
-          </button>
-        </div>
+        )} */}
       </div>
     </div>
   );

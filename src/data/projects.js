@@ -3,7 +3,7 @@ export const projects = [
     title: "Fantasy Football Roster Analyzer",
     description:
       "Using Sleeper API, built an app to analyze fantasy football rosters and view ownership shares and player availability across leagues.",
-    link: "https://observablehq.com/d/30beac9f13e39451",
+    link: "https://github.com/dsilva2/sleeper-mobile",
     technologies: ["React Native", "Expo Go", "Supabase"],
   },
   {
@@ -11,10 +11,10 @@ export const projects = [
     description:
       "Built a computer vision tool to make physical poker more accessible to visually impaired players by reading cards on the table and transmitting that information to the player via private audio feedback ",
     link: "https://drive.google.com/file/d/1mMHK1Dgio4hG9YietG9g-0LAHS0KBQVE/view?usp=sharing",
-    technologies: ["YOLO", "OpenCV", "Flask"],
+    technologies: ["YOLO", "HTML", "CSS", "JavaScript"],
   },
   {
-    title: "Pokémon Project",
+    title: "Pokémon Showdown Agent",
     description:
       "Trained AI agents to play Pokémon Showdown using Q-Learning and SARSA to compare success of different reinforcement learning algorithms.",
     link: "https://github.com/dsilva2/pokemon",
@@ -27,12 +27,12 @@ export const projects = [
     link: "https://medium.com/stanford-cs224w/editpedia-a-gnn-approach-to-predicting-user-edits-on-wikipedia-pages-9e0fcd5ee63c",
     technologies: ["Python", "PyTorch", "GNN"],
   },
-  {
-    title: "Beer!",
-    description: "Beer Description",
-    link: "https://observablehq.com/d/30beac9f13e39451",
-    technologies: ["JavaScript", "Observable", "Tableau"],
-  },
+  // {
+  //   title: "Beer!",
+  //   description: "An interactive visual explainer examining the beer industry in the United States.",
+  //   link: "https://observablehq.com/d/30beac9f13e39451",
+  //   technologies: ["JavaScript", "Observable", "Tableau"],
+  // },
   //   {
   //     title: "GLOVE",
   //     description: "Built a glove with arduino touch sensors to detect hand gestures that simulate payments in order to reduce transactions.",
@@ -41,16 +41,16 @@ export const projects = [
   //   },
   {
     title: "daha",
-    description: "daha Description",
-    link: "https://observablehq.com/d/30beac9f13e39451",
+    description:
+      "A peer to peer lending platform for college students that allows them to find what they need from the community around them.",
+    link: "https://drive.google.com/file/d/1z-HHp-GYcpZn0zhoNtUUfdNEw4gsaZ0a/view?ts=6411717a",
     technologies: ["React Native", "Expo Go", "Supabase"],
   },
-  //   {
-  //     title: "Personal Website",
-  //     description:
-  //       "A React-based personal website with fun interactive elements like a bamboozled mode and keyboard contact page.",
-  //     link: "https://github.com/yourusername/personal-website",
-  //     technologies: ["React", "JavaScript", "CSS"],
-  //   },
+  {
+    title: "Flag Game",
+    description: "Quiz game assessing knowledge of the flags of the world",
+    link: "https://drew-silva.com/flags",
+    technologies: ["React", "JavaScript", "CSS"],
+  },
   // Add more projects here following the same structure
 ];
