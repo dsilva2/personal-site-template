@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { supabase } from "../lib/supabase";
 
 export const Contact = () => {
   const [displayText, setDisplayText] = useState("");
@@ -94,12 +95,22 @@ export const Contact = () => {
     boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     setShowModal(true);
     // Auto-hide modal after 3 seconds
+    
     setTimeout(() => {
       setShowModal(false);
     }, 3000);
+    try {
+      const { error } = await supabase
+        .from("emails")
+        .insert([{ email: displayText }]);
+
+      if (error) throw error;
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
   };
 
   return (
