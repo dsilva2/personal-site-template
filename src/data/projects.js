@@ -1,5 +1,19 @@
 export const projects = [
   {
+    title: "AR Beer Pong",
+    description:
+      "Built for Snap Spectacles, an AR beer pong game centered around fostering social connections.",
+    link: "https://github.com/dsilva2/cup-pong",
+    technologies: ["TypeScript", "Lens Studio", "Snap Spectacles"],
+  },
+  {
+    title: "Curriculum Transformer",
+    description:
+      "Tool for teachers to transform traditional curriculum into project-based, socioemotional learning curriculum.",
+    link: "https://curriculum-transformer.vercel.app/",
+    technologies: ["React", "User Research", "CSS"],
+  },
+  {
     title: "Fantasy Football Roster Analyzer",
     description:
       "Using Sleeper API, built an app to analyze fantasy football rosters and view ownership shares and player availability across leagues.",
