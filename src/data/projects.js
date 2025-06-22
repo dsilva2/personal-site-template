@@ -52,5 +52,4 @@ export const projects = [
     link: "https://drew-silva.com/flags",
     technologies: ["React", "JavaScript", "CSS"],
   },
-  // Add more projects here following the same structure
 ];
