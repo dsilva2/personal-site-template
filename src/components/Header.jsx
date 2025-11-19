@@ -17,7 +17,7 @@ export const Header = () => {
         }}
       >
         <h1 style={{ marginBottom: "5px" }}>Drew Silva</h1>
-        <h2 style={headerStyle}>MS Student at Stanford University</h2>
+        <h2 style={headerStyle}>Stanford University '24, '25 M.S.</h2>
         <h3 style={headerStyle}>
           <Link
             to="/contact"
