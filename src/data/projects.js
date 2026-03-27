@@ -1,5 +1,12 @@
 export const projects = [
   {
+    title: "Draft Madness",
+    description:
+      "Fantasy style March Madness game, supporting hundreds of users across 30+ leagues.",
+    link: "https://playdraftmadness.com",
+    technologies: ["TypeScript", "React", "Next.js", "Tailwind CSS"],
+  },
+  {
     title: "AR Beer Pong",
     description:
       "Built for Snap Spectacles, an AR beer pong game centered around fostering social connections.",
