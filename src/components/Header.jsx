@@ -30,7 +30,7 @@ export const Header = () => {
               },
             }}
           >
-            dsilva24 /at/ stanford.edu
+            drewsilva229 /at/ gmail.com
           </Link>
         </h3>
         <div

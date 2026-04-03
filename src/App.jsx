@@ -1,4 +1,5 @@
 import "./App.css";
+import { Analytics } from "@vercel/analytics/react";
 import { Home } from "./best/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Bamboozled } from "./components/Bamboozled";
@@ -18,6 +19,7 @@ function App() {
         <Route path="/bamboozled" element={<Bamboozled />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Analytics />
     </Router>
   );
 }
